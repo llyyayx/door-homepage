@@ -60,6 +60,18 @@ const maskClose = () => {
     justify-content: center;
     align-items: center;
     z-index: 999;
+    & ::-webkit-scrollbar {
+        width: 4px;
+    }
+    & ::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        box-shadow: inset 0 0 5px #d8d8d8;
+        background: #535353;
+    }
+    & ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px #d8d8d8;
+        background: #ededed;
+    }
     .popup__box {
         width: var(--wdith);
         background-color: #FFFFFF;

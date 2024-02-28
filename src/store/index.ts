@@ -1,10 +1,12 @@
 import { createStore, ModuleTree } from 'vuex'
 import keepAlive, { keepAliveState } from './modules/keepAlive'
 import dataCenter, { dataCenterState } from './modules/data'
+import contentCenter, { contentCenterState } from './modules/content'
 
 export interface AllState {
   keepAlive: keepAliveState,
-  dataCenter: dataCenterState
+  dataCenter: dataCenterState,
+  contentCenter: contentCenterState
 }
 
 
@@ -13,7 +15,8 @@ const store = createStore<AllState>({
 
   modules: {
     keepAlive,
-    dataCenter
+    dataCenter,
+    contentCenter
   }
 
 })

@@ -2,38 +2,32 @@
     <div class="content__container home__container">
         <div class="content__box" :class="mode">
             <div class="prdline__img">
-                <img class="widthFix" src="@/assets/img/content/lg.png">
-                <div class="positioning" @click="openPopup">钢坯表面检测</div>
+                <img class="widthFix" :src="subProduct[route.query.mark]['imgBase']">
+                <div 
+                    class="positioning"
+                    v-for="item in subProduct[route.query.mark]['children']"
+                    :style="{ '--x': item.x + 'px', '--y': item.y + 'px' }"
+                    @click="openPopup(item)"
+                >
+                    {{ item.name }}
+                </div>
             </div>
             <div class="balck" @click="backHome">
                 <img class="widthFix" src="@/assets/img/home.png">
             </div>
             <popup v-model="popupShow" width="70%">
                 <div class="introduce__box">
-                    <div class="introduce__box-title">设备点检及预知性维护</div>
+                    <div class="introduce__box-title">{{ popupContent.name }}</div>
                     <div class="introduce__box-nr">
                         <div class="nr__box">
-                            <div class="nr__box-title">场景痛点:</div>
-                            <div class="nr__box-content">关于场景痛点，详细信息在此展示，文字14关于场景痛点，详细信息在此展示，文字14关于场景痛点，详细信息在此展示，文字14
-                                关于场景痛点，详细信息在此展示，文字14关于场景痛点，详细信息在此展示，文字14关于场景痛点，详细信息在此展示，文字14
-                                关于场景痛点，详细信息在此展示，文字14关于场景痛点，详细信息在此展示，文字14关于场景痛点，详细信息在此展示，文字14
-                                关于场景痛点，详细信息在此展示，文字14关于场景痛点，详细信息在此展示，文字14关于场景痛点，详细信息在此展示，文字14
-                                关于场景痛点，详细信息在此展示，文字14关于场景痛点，详细信息在此展示，文字14关于场景痛点，详细信息在此展示，文字14
-                            </div>
-                            <div class="nr__box-title">解决方案:</div>
-                            <div class="nr__box-content">关于场景痛点，详细信息在此展示，文字14关于场景痛点，详细信息在此展示，文字14关于场景痛点，详细信息在此展示，文字14
-                                关于场景痛点，详细信息在此展示，文字14关于场景痛点，详细信息在此展示，文字14关于场景痛点，详细信息在此展示，文字14
-                                关于场景痛点，详细信息在此展示，文字14关于场景痛点，详细信息在此展示，文字14关于场景痛点，详细信息在此展示，文字14
-                                关于场景痛点，详细信息在此展示，文字14关于场景痛点，详细信息在此展示，文字14关于场景痛点，详细信息在此展示，文字14
-                                关于场景痛点，详细信息在此展示，文字14关于场景痛点，详细信息在此展示，文字14关于场景痛点，详细信息在此展示，文字14
-                            </div>
+                            <div class="nr__box-title" v-if="popupContent.painSpot && popupContent.painSpot.length > 0">场景痛点:</div>
+                            <div class="nr__box-content" v-html="popupContent.painSpot ?  popupContent.painSpot : ''"></div>
+                            <div class="nr__box-title" v-if="popupContent.programme && popupContent.programme.length > 0">解决方案:</div>
+                            <div class="nr__box-content" v-html="popupContent.programme ? popupContent.programme : ''"></div>
                         </div>
-                        <div class="nr__img">
-                            <div class="nr__img-box">
-                                <img class="widthFix" src="@/assets/img/module/ny.png">
-                            </div>
-                            <div class="nr__img-box">
-                                <img class="widthFix" src="@/assets/img/module/ny.png">
+                        <div class="nr__img" v-if="popupContent.introduceImg && popupContent.introduceImg.length > 0">
+                            <div class="nr__img-box" v-for="pictrue in popupContent.introduceImg" :style="{ '--length': popupContent.introduceImg.length }">
+                                <img class="widthFix" :src="pictrue">
                             </div>
                         </div>
                     </div>
@@ -45,20 +39,25 @@
 <script lang="ts" setup>
 import scale, { mode, clearListener } from '@/utils/scale'
 import popup from '@/components/popup.vue'
-import { ref, onMounted } from 'vue'
-import { useRouter, onBeforeRouteLeave } from 'vue-router'
+import { ref, onMounted, reactive } from 'vue'
+import { useRouter, useRoute, onBeforeRouteLeave } from 'vue-router'
 import { setupMapState } from '@/utils/setupStore'
+
+const route: any = useRoute()
 
 // 开启全尺寸屏幕自适应
 onMounted(() => { scale() })
 // 清楚库内部监听
 onBeforeRouteLeave(() => { clearListener() })
-const { pageXRadio, pageYRadio } = setupMapState('dataCenter', ['pageXRadio', 'pageYRadio'])
+const { subProduct } = setupMapState('contentCenter', ['subProduct'])
 
+// 弹出显示
 const popupShow = ref<boolean>(false)
-const openPopup = () => {
-    //console.log(popupShow.value)
+// 弹出内容
+const popupContent = ref<any>({})
+const openPopup = (item: any) => {
     popupShow.value = true
+    popupContent.value = {...item} 
 }
 
 const router = useRouter()
@@ -86,7 +85,7 @@ const backHome = () => {
 .content__container {
     width: 100%;
     height: 100%;
-    background-color: #DFE9F2;
+    background: linear-gradient(to top,#0b072f, #2e53bd);
     user-select: none;
     .content__box {
         position: relative;
@@ -101,17 +100,19 @@ const backHome = () => {
             .positioning {
                 width: 124px;
                 height: 140px;
+                padding: 0 8px;
+                box-sizing: border-box;
                 background-image: url('@/assets/img/content/lx.png');
                 background-repeat: no-repeat;
                 background-size: contain;
                 position: absolute;
-                left: 400px;
-                top: 300px;
+                left: var(--x);
+                top: var(--y);
                 text-align: center;
                 line-height: 140px;
                 color: #FFFFFF;
                 font-size: 18px;
-                font-family: 'SYHT';
+                font-family: 'YSBT';
                 white-space: nowrap;
                 text-overflow: ellipsis;
                 overflow: hidden;
@@ -129,6 +130,7 @@ const backHome = () => {
     }
     .introduce__box {
         max-height: 972px;
+        min-height: 800px;
         overflow-y: auto;
         padding: 30px 90px 50px;
         box-sizing: border-box;
@@ -175,7 +177,7 @@ const backHome = () => {
                 margin-top: 36px;
                 justify-content: space-between;
                 .nr__img-box {
-                    width: 39.7%;
+                    width: calc(100% / var(--length) - 5%);
                 }
             }
         }

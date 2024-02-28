@@ -111,6 +111,7 @@ import rollmsg from '@/components/rollmsg.vue'
 
 // 数据
 const { prdLineModule, area, pageXRadio, pageYRadio } = setupMapState('dataCenter', ['prdLineModule', 'area', 'pageXRadio', 'pageYRadio'])
+const { subProduct } = setupMapState('contentCenter', ['subProduct'])
 
 // 开启全尺寸屏幕自适应
 onMounted(() => { scale() })
@@ -172,7 +173,13 @@ const router = useRouter()
 // 跳转到详情页面
 const tolink = (prdLine: any) => {
     prdLine.select.show = false
-    router.push({ path: '/content' })
+    let mark = prdLine.mark
+    if (mark == 'lc2') {  mark = 'lc' }
+    if (subProduct.value[mark]) {
+        router.push({ path: '/content', query: { mark } })
+    } else {
+        alert('该产线下无内容')
+    }
 }
 </script>
 <style lang="scss" scoped>

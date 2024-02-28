@@ -6,7 +6,7 @@ export type keepAliveState = {
 
 const state: keepAliveState = {
   // 需缓存路由名称
-  includeList: []
+  includeList: ['home']
 }
 
 const keepAlive = {
