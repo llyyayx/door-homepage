@@ -15,20 +15,17 @@
             <div class="balck" @click="backHome">
                 <img class="widthFix" src="@/assets/img/home.png">
             </div>
-            <popup v-model="popupShow" width="70%">
-                <div class="introduce__box">
-                    <div class="introduce__box-title">{{ popupContent.name }}</div>
-                    <div class="introduce__box-nr">
-                        <div class="nr__box">
-                            <div class="nr__box-title" v-if="popupContent.painSpot && popupContent.painSpot.length > 0">场景痛点:</div>
-                            <div class="nr__box-content" v-html="popupContent.painSpot ?  popupContent.painSpot : ''"></div>
-                            <div class="nr__box-title" v-if="popupContent.programme && popupContent.programme.length > 0">解决方案:</div>
-                            <div class="nr__box-content" v-html="popupContent.programme ? popupContent.programme : ''"></div>
-                        </div>
-                        <div class="nr__img" v-if="popupContent.introduceImg && popupContent.introduceImg.length > 0">
-                            <div class="nr__img-box" v-for="pictrue in popupContent.introduceImg" :style="{ '--length': popupContent.introduceImg.length }">
-                                <img class="widthFix" :src="pictrue">
-                            </div>
+            <popup v-model="popupShow" :title="popupContent.name">
+                <div class="introduce__box-nr">
+                    <div class="nr__box">
+                        <div class="nr__box-title" v-if="popupContent.painSpot && popupContent.painSpot.length > 0">场景痛点:</div>
+                        <div class="nr__box-content" v-html="popupContent.painSpot ?  popupContent.painSpot : ''"></div>
+                        <div class="nr__box-title" v-if="popupContent.programme && popupContent.programme.length > 0">解决方案:</div>
+                        <div class="nr__box-content" v-html="popupContent.programme ? popupContent.programme : ''"></div>
+                    </div>
+                    <div class="nr__img" v-if="popupContent.introduceImg && popupContent.introduceImg.length > 0">
+                        <div class="nr__img-box" v-for="pictrue in popupContent.introduceImg" :style="{ '--length': popupContent.introduceImg.length }">
+                            <img class="widthFix" :src="pictrue">
                         </div>
                     </div>
                 </div>
@@ -118,6 +115,12 @@ const backHome = () => {
                 overflow: hidden;
                 z-index: 2;
                 cursor: pointer;
+                transition: transform linear 0.2s;
+                &:hover {
+                    transform: scale(1.2);
+                    transform-origin: center;
+                    font-size: calc(14px / 1);
+                }
             }
         }
         .balck {
@@ -128,57 +131,45 @@ const backHome = () => {
             cursor: pointer;
         }
     }
-    .introduce__box {
-        max-height: 972px;
-        min-height: 800px;
-        overflow-y: auto;
-        padding: 30px 90px 50px;
-        box-sizing: border-box;
-        .introduce__box-title {
-            font-size: 34px;
-            line-height: 50px;
-            text-align: center;
-            font-family: 'SYHT';
-            color: #313233;
-        }
-        .introduce__box-nr {
-            margin-top: 52px;
-            .nr__box {
-                .nr__box-title {
-                    font-size: 20px;
-                    font-family: 'SYHT';
-                    position: relative;
-                    margin-top: 50px;
-                    color: #313233;
-                    &::after {
-                        content: "";
-                        width: 14px;
-                        height: 14px;
-                        background-image: url('@/assets/img/point.png');
-                        background-size: cover;
-                        position: absolute;
-                        top: 50%;
-                        transform: translateY(-50%);
-                        left: -20px;
-                        z-index: 2;
-                    }
+    .introduce__box-nr {
+        padding: 0 50px;
+        .nr__box {
+            .nr__box-title {
+                font-size: 20px;
+                font-family: 'SYHT';
+                position: relative;
+                color: #02FFF9;
+                &::after {
+                    content: "";
+                    width: 14px;
+                    height: 14px;
+                    background-image: url('@/assets/img/point.png');
+                    background-size: cover;
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    left: -20px;
+                    z-index: 2;
                 }
-                .nr__box-content {
-                    font-size: 14px;
-                    color: #666666;
-                    line-height: 28px;
-                    font-family: 'SYHT';
-                    margin-top: 8px;
-                    text-align: justify;
+                &:nth-child(3) {
+                    margin-top: 50px;
                 }
             }
-            .nr__img {
-                display: flex;
-                margin-top: 36px;
-                justify-content: space-between;
-                .nr__img-box {
-                    width: calc(100% / var(--length) - 5%);
-                }
+            .nr__box-content {
+                font-size: 14px;
+                color: #FFFFFF;
+                line-height: 28px;
+                font-family: 'SYHT';
+                margin-top: 8px;
+                text-align: justify;
+            }
+        }
+        .nr__img {
+            display: flex;
+            margin-top: 36px;
+            justify-content: space-between;
+            .nr__img-box {
+                width: calc(100% / var(--length) - 5%);
             }
         }
     }

@@ -99,7 +99,7 @@ const tableTimerFun = () => {
     height: 245px;
     background-image: url('@/assets/img/bk.png');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% 100%;
     z-index: 999;
     .rollmsg__title {
         flex-shrink: 0;

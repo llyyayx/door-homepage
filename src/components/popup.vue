@@ -1,12 +1,23 @@
 <template>
-    <Transition enter-active-class="animate__animated animate__zoomIn" leave-active-class="animate__animated animate__zoomOut">
+    <Transition enter-active-class="animate__animated animate__zoomIn" leave-active-class="animate__animated animate__zoomOut" style="--animate-duration: 0.6s">
         <div class="popup__container" :style="{'--wdith': width}" v-show="modelValue" @click="maskClose">
             <div class="popup__box">
+                <div class="popup__box-img">
+                    <img src="@/assets/img/popupBg.png">
+                </div>
                 <div class="popup__content" @click.stop>
-                    <slot></slot>
+                    <div class="popup__content-nr">
+                        <div class="nr__title">
+                            <img src="@/assets/img/popupTt.png">
+                            <p>{{ title }}</p>
+                        </div>
+                        <div class="nr__slot">
+                            <slot></slot>
+                        </div>
+                    </div>
                 </div>
                 <div class="popup__close">
-                    <img src="@/assets/img/close.png" alt="关闭" @click.stop="close">
+                    <img src="@/assets/img/popupGb.png" alt="关闭" @click.stop="close">
                 </div>
             </div>
         </div>
@@ -33,7 +44,13 @@ const props = defineProps({
     width: {
         type: String,
         required: false,
-        default: '50vw'
+        default: '1356px'
+    },
+    // 标题
+    title: {
+        type: String,
+        required: false,
+        default: '123'
     },
 })
 
@@ -66,22 +83,82 @@ const maskClose = () => {
     & ::-webkit-scrollbar-thumb {
         border-radius: 10px;
         box-shadow: inset 0 0 5px #d8d8d8;
-        background: #535353;
+        background: #0B0329;
     }
     & ::-webkit-scrollbar-track {
         box-shadow: inset 0 0 5px #d8d8d8;
-        background: #ededed;
+        background: #2469EC;
     }
     .popup__box {
         width: var(--wdith);
-        background-color: #FFFFFF;
         border-radius: 5px;
         position: relative;
+        .popup__box-img {
+            width: 100%;
+            img {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+        }
+        .popup__content {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            padding: 60px 50px 60px;
+            overflow: hidden;
+            box-sizing: border-box;
+            .popup__content-nr {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                position: relative;
+                .nr__title {
+                    flex-shrink: 0;
+                    position: relative;
+                    width: 100%;
+                    img {
+                        display: block;
+                        width: 100%;
+                        height: auto;
+                    }
+                    p {
+                        position: absolute;
+                        top: 35%;
+                        transform: translateY(-50%);
+                        color: #FFFFFF;
+                        font-family: YSBT;
+                        font-size: 45px;
+                        left: 14.1%;
+                        line-height: 66px;
+                        &::after {
+                            content: '';
+                            width: 54px;
+                            height: 54px;
+                            background-image: url('@/assets/img/popupZs.png');
+                            background-repeat: no-repeat;
+                            background-size: 100% 100%;
+                            position: absolute;
+                            left: -70px;
+                            top: 50%;
+                            transform: translateY(-50%);
+                        }
+                    }
+                }
+                .nr__slot {
+                    flex: 1;
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                }
+            }
+        }
         .popup__close {
             width: 28px;
             position: absolute;
-            right: -50px;
-            top: 0;
+            right: 55px;
+            top: 85px;
             transform: translateY(-100%);
             cursor: pointer;
             img {
