@@ -15,6 +15,7 @@ const state: contentCenterState = {
                 {
                     // 子产品名称
                     name: '智能料场',
+                    abbr: '料',
                     // 定位
                     x: 800,
                     y: 180, 
@@ -60,6 +61,7 @@ const state: contentCenterState = {
             children: [
                 {
                     name: '焦化自动化控制系统',
+                    abbr: '焦',
                     x: 800,
                     y: 180, 
                     painSpot: `
@@ -81,6 +83,7 @@ const state: contentCenterState = {
                 },
                 {
                     name: '智能干熄焦系统',
+                    abbr: '干',
                     x: 1000,
                     y: 180, 
                     painSpot: `
@@ -102,6 +105,7 @@ const state: contentCenterState = {
             children: [
                 {
                     name: '智能烧结系统',
+                    abbr: '烧',
                     x: 800,
                     y: 180, 
                     painSpot: `
@@ -130,6 +134,7 @@ const state: contentCenterState = {
             children: [
                 {
                     name: '球团系统',
+                    abbr: '球',
                     x: 800,
                     y: 180, 
                     painSpot: `
@@ -156,6 +161,7 @@ const state: contentCenterState = {
             children: [
                 {
                     name: '高炉系统',
+                    abbr: '炉',
                     x: 800,
                     y: 180, 
                     painSpot: `
@@ -170,6 +176,7 @@ const state: contentCenterState = {
                 },
                 {
                     name: '高炉专家系统',
+                    abbr: '专',
                     x: 1000,
                     y: 180, 
                     painSpot: `
@@ -197,6 +204,7 @@ const state: contentCenterState = {
             children: [
                 {
                     name: '一键KR',
+                    abbr: 'KR',
                     x: 800,
                     y: 200, 
                     painSpot: '',
@@ -216,6 +224,7 @@ const state: contentCenterState = {
                 },
                 {
                     name: '一键炼钢/出钢系统',
+                    abbr: '钢',
                     x: 1000,
                     y: 200, 
                     painSpot: `
@@ -232,6 +241,7 @@ const state: contentCenterState = {
                 },
                 {
                     name: '转炉智慧炼钢系统',
+                    abbr: '转',
                     x: 1000,
                     y: 60, 
                     painSpot: `
@@ -266,6 +276,7 @@ const state: contentCenterState = {
                 },
                 {
                     name: 'RH精炼过程控制系统',
+                    abbr: 'RH',
                     x: 800,
                     y: 60, 
                     painSpot: '',
@@ -277,6 +288,7 @@ const state: contentCenterState = {
                 },
                 {
                     name: 'LF精炼过程控制系统',
+                    abbr: 'LF',
                     x: 200,
                     y: 60, 
                     painSpot: '',
@@ -290,6 +302,7 @@ const state: contentCenterState = {
                 },
                 {
                     name: 'VD/VOD精炼过程控制系统',
+                    abbr: 'VD',
                     x: 400,
                     y: 60, 
                     painSpot: '',
@@ -303,6 +316,7 @@ const state: contentCenterState = {
                 },
                 {
                     name: '板坯连铸过程控制系统',
+                    abbr: '坯',
                     x: 600,
                     y: 60, 
                     painSpot: '',
@@ -318,6 +332,7 @@ const state: contentCenterState = {
                 },
                 {
                     name: '套筒窑系统',
+                    abbr: '窑',
                     x: 600,
                     y: 200, 
                     painSpot: `
@@ -333,6 +348,7 @@ const state: contentCenterState = {
                 },
                 {
                     name: '无人天车',
+                    abbr: '天',
                     x: 400,
                     y: 200, 
                     painSpot: `
@@ -364,6 +380,7 @@ const state: contentCenterState = {
             children: [
                 {
                     name: '加热炉系统',
+                    abbr: '加',
                     x: 800,
                     y: 60, 
                     painSpot: `
@@ -379,6 +396,7 @@ const state: contentCenterState = {
                 },
                 {
                     name: '棒线材自动化控制系统',
+                    abbr: '棒',
                     x: 1000,
                     y: 60, 
                     painSpot: `
@@ -391,6 +409,7 @@ const state: contentCenterState = {
                 },
                 {
                     name: '无人天车',
+                    abbr: '天',
                     x: 400,
                     y: 60, 
                     painSpot: `
@@ -422,6 +441,7 @@ const state: contentCenterState = {
             children: [
                 {
                     name: '冷轧处理线自动化控制系统',
+                    abbr: '冷',
                     x: 800,
                     y: 200, 
                     painSpot: `
@@ -434,6 +454,7 @@ const state: contentCenterState = {
                 },
                 {
                     name: '冷轧处理线数字化控制系统',
+                    abbr: '数',
                     x: 1000,
                     y: 200, 
                     painSpot: `
@@ -452,6 +473,7 @@ const state: contentCenterState = {
                 },
                 {
                     name: '大型连续退火炉过程控制系统',
+                    abbr: '退',
                     x: 1000,
                     y: 60, 
                     painSpot: `
@@ -467,6 +489,7 @@ const state: contentCenterState = {
                 },
                 {
                     name: '轧钢生产过程动态分析系统',
+                    abbr: '轧',
                     x: 800,
                     y: 60, 
                     painSpot: `
@@ -485,6 +508,7 @@ const state: contentCenterState = {
                 },
                 {
                     name: '磨辊间智能化系统',
+                    abbr: '辊',
                     x: 200,
                     y: 60, 
                     painSpot: `
@@ -501,6 +525,7 @@ const state: contentCenterState = {
                 },
                 {
                     name: '拆捆带机器人',
+                    abbr: '拆',
                     x: 400,
                     y: 60, 
                     painSpot: `
@@ -515,6 +540,7 @@ const state: contentCenterState = {
                 },
                 {
                     name: '贴标机器人',
+                    abbr: '贴',
                     x: 600,
                     y: 60, 
                     painSpot: `
@@ -529,6 +555,7 @@ const state: contentCenterState = {
                 },
                 {
                     name: '取样贴标机器人',
+                    abbr: '取',
                     x: 600,
                     y: 200, 
                     painSpot: `
@@ -543,6 +570,7 @@ const state: contentCenterState = {
                 },
                 {
                     name: '无人天车',
+                    abbr: '天',
                     x: 1200,
                     y: 200, 
                     painSpot: `
@@ -574,6 +602,7 @@ const state: contentCenterState = {
             children: [
                 {
                     name: '数据采集系统',
+                    abbr: '数',
                     x: 800,
                     y: 180, 
                     painSpot: `
@@ -586,6 +615,7 @@ const state: contentCenterState = {
                 },
                 {
                     name: '中板库智能仓储系统',
+                    abbr: '板',
                     x: 1000,
                     y: 180, 
                     painSpot: `
@@ -603,6 +633,7 @@ const state: contentCenterState = {
                 },
                 {
                     name: '智慧设备运维平台',
+                    abbr: '维',
                     x: 600,
                     y: 180, 
                     painSpot: `
@@ -620,6 +651,7 @@ const state: contentCenterState = {
             children: [
                 {
                     name: '卸船机',
+                    abbr: '船',
                     x: 800,
                     y: 180, 
                     painSpot: `
@@ -640,6 +672,7 @@ const state: contentCenterState = {
             children: [
                 {
                     name: '质检一体化',
+                    abbr: '检',
                     x: 800,
                     y: 180, 
                     painSpot: `

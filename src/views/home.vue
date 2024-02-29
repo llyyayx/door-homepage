@@ -304,7 +304,6 @@ const tolink = (prdLine: any) => {
                 font-size: 18px;
                 font-family: YSBT;
                 color: #71f6f0;
-                text-shadow: 0 0 10px #71f6f0, 0 0  2px #71f6f0;
                 cursor: pointer;
             }
         }

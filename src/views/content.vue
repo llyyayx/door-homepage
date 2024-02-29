@@ -9,7 +9,8 @@
                     :style="{ '--x': item.x + 'px', '--y': item.y + 'px' }"
                     @click="openPopup(item)"
                 >
-                    {{ item.name }}
+                    <span class="p__often">{{ item.abbr }}</span>
+                    <span class="p__hover">{{ item.name }}</span>
                 </div>
             </div>
             <div class="balck" @click="backHome">
@@ -79,6 +80,20 @@ const backHome = () => {
     transform-origin: left top;
     transform: scaleX(var(--widthRatio)) scaleY(var(--heightRatio));
 }
+@keyframes tscale {
+    /* 开始状态 */
+    0% {
+        width: 36px;
+        height: 36px;
+        opacity: 1;
+    }
+    /* 结束状态 */
+    100% {
+        width: 72px;
+        height: 72px;
+        opacity: 0;
+    }
+}
 .content__container {
     width: 100%;
     height: 100%;
@@ -95,31 +110,67 @@ const backHome = () => {
             transform: translate(-50%, -50%);
             width: 90%;
             .positioning {
-                width: 124px;
-                height: 140px;
-                padding: 0 8px;
+                width: 36px;
+                height: 36px;
+                border-radius: 100%;
                 box-sizing: border-box;
-                background-image: url('@/assets/img/content/lx.png');
-                background-repeat: no-repeat;
-                background-size: contain;
+                background-color: #1890FF;
                 position: absolute;
                 left: var(--x);
                 top: var(--y);
+                transform: translate(-50%, -50%);
                 text-align: center;
-                line-height: 140px;
+                line-height: 36px;
                 color: #FFFFFF;
-                font-size: 18px;
+                font-size: 15px;
                 font-family: 'YSBT';
                 white-space: nowrap;
                 text-overflow: ellipsis;
-                overflow: hidden;
                 z-index: 2;
                 cursor: pointer;
                 transition: transform linear 0.2s;
+                .p__often {
+                    display: inline-block;
+                }
+                .p__hover {
+                    display: none;
+                }
+                &::after, &::before {
+                    content: '';
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                    transform-origin: center center;
+                    width: 36px;
+                    height: 36px;
+                    border-radius: 100%;
+                    border: 1px solid #FFFFFF;
+                    animation-name: tscale;
+                    animation-duration: 1.5s;
+                    animation-timing-function: linear;
+                    animation-fill-mode: backwards;
+                    animation-iteration-count: infinite;
+                    opacity: 0;
+                    z-index: -1;
+                }
+                &::before {
+                    animation-delay: 0.7s;
+                }
                 &:hover {
-                    transform: scale(1.2);
-                    transform-origin: center;
-                    font-size: calc(14px / 1);
+                    width: 200px;
+                    border-radius: 10px;
+                    transition: width linear 0.2s;
+                    z-index: 9;
+                    .p__often {
+                        display: none;
+                    }
+                    .p__hover {
+                        display: inline-block;
+                    }
+                    &::after, &::before {
+                        display: none;
+                    }
                 }
             }
         }
@@ -156,7 +207,7 @@ const backHome = () => {
                 }
             }
             .nr__box-content {
-                font-size: 14px;
+                font-size: 15px;
                 color: #FFFFFF;
                 line-height: 28px;
                 font-family: 'SYHT';

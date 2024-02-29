@@ -272,7 +272,7 @@ const state: dataCenterState = {
                 { province: '贵州省', city: '达州', name: '达钢' },
                 { province: '贵州省', city: '六盘水市', name: '首钢水钢' },
                 { province: '重庆市', city: '綦江区', name: '旗能电铝' },
-                { province: '重庆市', city: '重庆市北碚区', name: '重庆武中汽车' }
+                { province: '重庆市', city: '北碚区', name: '重庆武中汽车' }
             ]
         },
         { 
@@ -303,8 +303,8 @@ const state: dataCenterState = {
             factory: [
                 { province: '广东省', city: '广州市', name: '广州钢贸' },
                 { province: '广东省', city: '佛山市', name: '佛山加工中心' },
-                { province: '广西壮族自治区', city: '柳州市', name: '柳钢' },
-                { province: '广西壮族自治区', city: '防城港', name: '广西钢铁' }
+                { province: '广西省', city: '柳州市', name: '柳钢' },
+                { province: '广西省', city: '防城港', name: '广西钢铁' }
             ]
         },
         { 
@@ -336,41 +336,41 @@ const state: dataCenterState = {
                 { province: '河北省', city: '石家庄市', name: '澳森钢铁' },
                 { province: '河北省', city: '迁安市', name: '首钢迁钢' },
                 { province: '河北省', city: '迁安市', name: '首钢智新' },
-                { province: '河北省', city: '唐山市曹妃甸工业区', name: '首钢京唐' },
-                { province: '河北省', city: '唐山市曹妃甸工业区', name: '西山焦化' },
-                { province: '河北省', city: '唐山市曹妃甸工业区', name: '唐银钢铁' },
-                { province: '河北省', city: '唐山市曹妃甸工业区', name: '文丰特钢' },
-                { province: '河北省', city: '唐山市海港区', name: '唐山中厚板' },
-                { province: '河北省', city: '唐山市海港区', name: '华西特钢' },
-                { province: '河北省', city: '唐山市丰南区', name: '瑞丰钢铁' },
-                { province: '河北省', city: '唐山市丰南区', name: '纵横钢铁' },
-                { province: '河北省', city: '河北省遵化市', name: '港陆钢铁' },
-                { province: '河北省', city: '河北省沧州市', name: '中钢滨海' },
+                { province: '河北省', city: '唐山市', name: '首钢京唐' },
+                { province: '河北省', city: '唐山市', name: '西山焦化' },
+                { province: '河北省', city: '唐山市', name: '唐银钢铁' },
+                { province: '河北省', city: '唐山市', name: '文丰特钢' },
+                { province: '河北省', city: '唐山市', name: '唐山中厚板' },
+                { province: '河北省', city: '唐山市', name: '华西特钢' },
+                { province: '河北省', city: '唐山市', name: '瑞丰钢铁' },
+                { province: '河北省', city: '唐山市', name: '纵横钢铁' },
+                { province: '河北省', city: '遵化市', name: '港陆钢铁' },
+                { province: '河北省', city: '沧州市', name: '中钢滨海' },
                 { province: '河北省', city: '秦皇岛市', name: '宏兴钢铁' },
                 { province: '河北省', city: '邯郸市', name: '华丰能源' },
                 { province: '河北省', city: '邯郸市', name: '太行钢铁' },
-                { province: '内蒙古自治区', city: '包头市', name: '包钢' }
-            ]
-        },
-        { 
-            title: '海外地区',
-            x: '1313px',
-            y: '855px',
-            factory: [
-                { province: '印尼', city: '爪哇岛', name: '印尼古龙拉嘉帕斯钢铁' },
-                { province: '越南', city: '河静省', name: '越南河静钢铁' }
+                { province: '内蒙古', city: '包头市', name: '包钢' }
             ]
         },
         { 
             title: '东北地区',
-            x: '1412px',
-            y: '834px',
+            x: '1313px',
+            y: '855px',
             factory: [
                 { province: '黑龙江省', city: '哈尔滨市', name: '哈尔滨加工中心' },
                 { province: '吉林省', city: '通化市', name: '首钢通钢' },
                 { province: '辽宁省', city: '沈阳市', name: '沈阳加工中心' },
                 { province: '辽宁省', city: '凤城市', name: '首钢硼铁' },
                 { province: '辽宁省', city: '本溪市', name: '本钢' }
+            ]
+        },
+        { 
+            title: '海外地区',
+            x: '1412px',
+            y: '834px',
+            factory: [
+                { province: '印尼', city: '爪哇岛', name: '古龙拉嘉帕斯钢铁' },
+                { province: '越南', city: '河静省', name: '河静钢铁' }
             ]
         },
     ],
