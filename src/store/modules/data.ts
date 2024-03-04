@@ -2,6 +2,7 @@
 export type dataCenterState = {
     prdLineModule: any[],
     area: any[],
+    platform: any[],
     pageXRadio: number,
     pageYRadio: number
 }
@@ -10,6 +11,7 @@ export type dataCenterState = {
 const modulePicture: Object = import.meta.glob('@/assets/img/module/*.png', { eager: true })
 const moduleActivePicture: Object = import.meta.glob('@/assets/img/module_active/*.png', { eager: true })
 const trackPicture: Object = import.meta.glob('@/assets/img/gd/*.png', { eager: true })
+const platformJpg: Object = import.meta.glob('@/assets/img/platform/*.jpg', { eager: true })
 
 // 计算缩放比较，因为平台的设计就是1920的，他被缩放放入整体设计稿(含背景)的1920内了
 const realityWidth = 1570 //.platform__main的clientWidth
@@ -374,6 +376,72 @@ const state: dataCenterState = {
             ]
         },
     ],
+    // 平台
+    platform: [
+        {
+            name: '智能中台',
+            x: 42,
+            y: 283,
+            pointX: 102,
+            pointY: 3,
+            size: 22
+        },
+        {
+            name: '数据中台',
+            x: 35,
+            y: 346,
+            pointX: 102,
+            pointY: 3,
+            size: 22
+        },
+        {
+            name: '边缘层',
+            x: 215,
+            y: 253,
+            pointX: 26,
+            pointY: 32,
+            size: 22
+        },
+        {
+            name: '安全',
+            x: 336,
+            y: 256,
+            pointX: 13,
+            pointY: 32,
+            size: 22
+        },
+        {
+            name: '技术中台',
+            x: 496,
+            y: 369,
+            pointX: -34,
+            pointY: 4,
+            size: 22
+        },
+        {
+            name: '组织架构',
+            x: 1081,
+            y: 183,
+            pointX: -30,
+            pointY: 4,
+            size: 22,
+            content: `
+                北京首钢自动化信息技术有限公司在册总人数3900余人，本科以上学历人数占88%。其中：博士12人、硕士144人。公司成立50余人工业互联网平台技术底座研发团队，并通过与产业产品300余人研发团队紧密结合，重点发展集团管控、数智服务、智慧制造、智慧供应链、工厂集控及智能装备六大业务，通过标准统一的工业互联网技术平台赋能产业产品落地，推动场景应用。
+                首自信公司以帮助客户实现数字化转型为使命，为客户提升价值为核心理念，以首钢集团信息化平台作为产业发展的基地，以引进、吸收、再创新为手段，经过20余年的积累，形成多款国内优秀的具有自主知识产权的面向钢铁行业的核心技术、产品及解决方案，产品覆盖冶金、政府、能源、汽车、建筑、金融和电力等二十余个行业，团队整体能力在国内同行业名列前茅。<br>
+                <b>企业使命：数字驱动  智造未来  惠及社会</b><br>
+                <b>企业愿景：工业智能化和智慧城市的引领者</b>     
+            `,
+            introduceImg: [
+                platformJpg['/src/assets/img/platform/zzjg.jpg']['default']
+            ],
+        },
+        {
+            name: 'IT基础平台',
+            x: 465,
+            y: 258,
+            size: 24
+        },
+    ]
 }
 
 const dataCenter = {

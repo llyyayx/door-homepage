@@ -81,9 +81,9 @@
             </div>
             <!-- 背景光圈 z-index: 3 -->
             <div class="circle__img">
-                <img class="widthFix" src="@/assets/img/circle.png">
+                <img class="widthFix" src="@/assets/img/circle2.png">
                 <!-- 地区 -->
-                <div class="circle__area" 
+                <div class="circle__area"
                     v-for="(item, index) in area" :style="{ 'left': item.x, 'top': item.y }"
                     :key="index"
                     @mouseenter.stop="selectArea($event, item.factory, item.title)" 
@@ -94,23 +94,43 @@
             </div>
             <!-- 底部手 z-index: 2 -->
             <div class="hand__img">
-                <img class="widthFix" src="@/assets/img/hand.png">
+                <img class="widthFix" src="@/assets/img/hand2.png">
+                <div :class="['hand__point', item.pointX == undefined ? 'nopoint' : '']" 
+                    v-for="(item, index) in platform" 
+                    :key="index"
+                    :style="{ '--x': item.x+'px', '--y': item.y+'px', '--px': item.pointX+'px', '--py': item.pointY+'px', '--size': item.size+'px' }"
+                    @click="showInfo(item)"
+                >
+                    {{ item.name }}
+                </div>
             </div>
             <!-- 信息滚动 -->
             <rollmsg :title="areaName" :tableData="selectFactory" :interval="40" :x="ax" :y="ay" />
+            <!-- 组织机构展示 -->
+            <popup v-model="organizeShow" title="北京首钢自动化信息技术有限公司">
+                <div class="introduce__box-nr">
+                    <div class="nr__box" v-html="organizeNr.content"></div>
+                    <div class="nr__img" v-if="organizeNr.introduceImg && organizeNr.introduceImg.length > 0" style="justify-content: center">
+                        <div class="nr__img-box" v-for="pictrue in organizeNr.introduceImg" :style="{ '--length': organizeNr.introduceImg.length }">
+                            <img class="widthFix" :src="pictrue">
+                        </div>
+                    </div>
+                </div>
+            </popup>
         </div>
     </div>
 </template>
 <script lang="ts" setup>
 import scale, { mode, clearListener } from '@/utils/scale'
 import { onMounted, ref } from 'vue'
+import popup from '@/components/popup.vue'
 import { onBeforeRouteLeave, useRouter } from 'vue-router'
 import { setupMapState } from '@/utils/setupStore'
 import 'animate.css/animate.min.css'
 import rollmsg from '@/components/rollmsg.vue'
 
 // 数据
-const { prdLineModule, area, pageXRadio, pageYRadio } = setupMapState('dataCenter', ['prdLineModule', 'area', 'pageXRadio', 'pageYRadio'])
+const { prdLineModule, area, pageXRadio, pageYRadio, platform } = setupMapState('dataCenter', ['prdLineModule', 'area', 'pageXRadio', 'pageYRadio', 'platform'])
 const { subProduct } = setupMapState('contentCenter', ['subProduct'])
 
 // 开启全尺寸屏幕自适应
@@ -179,6 +199,20 @@ const tolink = (prdLine: any) => {
         router.push({ path: '/content', query: { mark } })
     } else {
         alert('该产线下无内容')
+    }
+}
+
+// 组织机构内容显示
+const organizeShow = ref<boolean>(false)
+// 组织机构内容
+const organizeNr = ref<any>({})
+// 显示平台介绍信息
+const showInfo = (item: any) => {
+    if (item.content && item.content.length > 0) {
+        organizeNr.value = item
+        organizeShow.value = true
+    } else {
+        alert('该平台下无介绍内容')
     }
 }
 </script>
@@ -313,6 +347,63 @@ const tolink = (prdLine: any) => {
             right: -65px;
             bottom: -220px;
             z-index: 2;
+            .hand__point {
+                position: absolute;
+                left: var(--x);
+                top: var(--y);
+                font-size: var(--size);
+                color: #FFFFFF;
+                font-family: SYHT;
+                text-shadow: 0 0 2px #FFF;
+                cursor: pointer;
+                &::before {
+                    content: "";
+                    position: absolute;
+                    left: -15px;
+                    right: -15px;
+                    top: -6px;
+                    bottom: -6px;
+                    background-color: #179BFF;
+                    filter: blur(13px);
+                    z-index: -1;
+                }
+                &::after {
+                    content: '';
+                    position: absolute;
+                    left: var(--px);
+                    top: var(--py);
+                    width: 19px;
+                    height: 19px;
+                    background-color: #FFFFFF;
+                    border: 4px solid #179BFF;
+                    border-radius: 100%;
+                    box-sizing: border-box;
+                }
+            }
+            .nopoint {
+                &::after {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+.introduce__box-nr {
+    padding: 0 50px;
+    .nr__box {
+        font-size: 15px;
+        color: #666666;
+        line-height: 28px;
+        font-family: 'SYHT';
+        margin-top: 8px;
+        text-align: justify;
+    }
+    .nr__img {
+        display: flex;
+        margin-top: 36px;
+        justify-content: space-between;
+        .nr__img-box {
+            width: calc(100% / var(--length) - 5%);
         }
     }
 }

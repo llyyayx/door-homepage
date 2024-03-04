@@ -81,17 +81,32 @@ const backHome = () => {
     transform: scaleX(var(--widthRatio)) scaleY(var(--heightRatio));
 }
 @keyframes tscale {
-    /* 开始状态 */
     0% {
         width: 36px;
         height: 36px;
         opacity: 1;
     }
-    /* 结束状态 */
     100% {
         width: 72px;
         height: 72px;
         opacity: 0;
+    }
+}
+@keyframes opacityToOne {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes opacityToZero {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
     }
 }
 .content__container {
@@ -131,9 +146,14 @@ const backHome = () => {
                 transition: transform linear 0.2s;
                 .p__often {
                     display: inline-block;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
                 }
                 .p__hover {
                     display: none;
+                    opacity: 0;
                 }
                 &::after, &::before {
                     content: '';
@@ -163,10 +183,19 @@ const backHome = () => {
                     transition: width linear 0.2s;
                     z-index: 9;
                     .p__often {
-                        display: none;
+                        animation-name: opacityToZero;
+                        animation-duration: 0s;
+                        animation-timing-function: linear;
+                        animation-delay: 0.2s;
+                        animation-fill-mode: forwards;
                     }
                     .p__hover {
                         display: inline-block;
+                        animation-name: opacityToOne;
+                        animation-duration: 0.1s;
+                        animation-timing-function: linear;
+                        animation-delay: 0.2s;
+                        animation-fill-mode: forwards;
                     }
                     &::after, &::before {
                         display: none;
@@ -189,7 +218,8 @@ const backHome = () => {
                 font-size: 20px;
                 font-family: 'SYHT';
                 position: relative;
-                color: #02FFF9;
+                color: #313233;
+                margin-top: 50px;
                 &::after {
                     content: "";
                     width: 14px;
@@ -202,13 +232,10 @@ const backHome = () => {
                     left: -20px;
                     z-index: 2;
                 }
-                &:nth-child(3) {
-                    margin-top: 50px;
-                }
             }
             .nr__box-content {
                 font-size: 15px;
-                color: #FFFFFF;
+                color: #666666;
                 line-height: 28px;
                 font-family: 'SYHT';
                 margin-top: 8px;
