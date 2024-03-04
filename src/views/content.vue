@@ -84,11 +84,13 @@ const backHome = () => {
     0% {
         width: 36px;
         height: 36px;
+        border-width: 2px;
         opacity: 1;
     }
     100% {
         width: 72px;
         height: 72px;
+        border-width: 0px;
         opacity: 0;
     }
 }
@@ -144,6 +146,7 @@ const backHome = () => {
                 z-index: 2;
                 cursor: pointer;
                 transition: transform linear 0.2s;
+                box-shadow: 4px 4px 15px 3px rgba(0,0,0,0.3);
                 .p__often {
                     display: inline-block;
                     position: absolute;
