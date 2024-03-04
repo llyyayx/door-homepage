@@ -198,7 +198,7 @@ const tolink = (prdLine: any) => {
     if (subProduct.value[mark]) {
         router.push({ path: '/content', query: { mark } })
     } else {
-        alert('该产线下无内容')
+        //alert('该产线下无内容')
     }
 }
 
@@ -212,7 +212,7 @@ const showInfo = (item: any) => {
         organizeNr.value = item
         organizeShow.value = true
     } else {
-        alert('该平台下无介绍内容')
+        //alert('该平台下无介绍内容')
     }
 }
 </script>
